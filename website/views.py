@@ -26,9 +26,9 @@ def websites():
     return render_template("websites.html",user=current_user)
 
 
-@views.route('/notes', methods=['GET', 'POST'])
+@views.route('/note', methods=['GET', 'POST'])
 @login_required
-def notes():
+def note():
     if request.method == 'POST':
         note = request.form.get('note')
 
@@ -40,7 +40,7 @@ def notes():
             db.session.commit()
             flash('Note added!', category='success')
 
-    return render_template("notes.html", user=current_user)
+    return render_template("note.html", user=current_user)
 
 
 @views.route('/delete-note', methods=['POST'])
