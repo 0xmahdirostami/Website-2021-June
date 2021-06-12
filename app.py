@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = 'mahdirostami'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 db.init_app(app)
 def create_database(app):
-    if not path.exists("site/"+DB_NAME):
+    if not path.exists("site_github/"+DB_NAME):
         db.create_all(app=app)
         print('Created Database!')
 
