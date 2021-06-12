@@ -16,6 +16,7 @@ app.config['SECRET_KEY'] = 'mahdirostami'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 db.init_app(app)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -85,10 +86,10 @@ def stanford():
 def pacman():
     return render_template("pacman.html",user=current_user)
 
-@app.route('/projects/apis')
+@app.route('/apis')
 def apis():
     return render_template("apis.html",user=current_user)
-@app.route('/projects/websites')
+@app.route('/websites')
 def websites():
     return render_template("websites.html",user=current_user)
 
