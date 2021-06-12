@@ -55,7 +55,9 @@ def apis():
 @app.route('/websites')
 def websites():
     return render_template("websites.html",user=current_user)
-
+@app.route('/projects/website')
+def website():
+    return render_template("website.html",user=current_user)
 
 @app.route('/note', methods=['GET', 'POST'])
 @login_required
