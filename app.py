@@ -5,16 +5,23 @@ from os import path
 from flask_login import LoginManager,login_user, login_required, logout_user, current_user,UserMixin
 from sqlalchemy.sql import func
 import json
-
+from pathlib import Path
 app=Flask(__name__)
 db = SQLAlchemy()
-DB_NAME = "mahdi"
+DB_NAME = "mahdi.db"
 
 
 
 app.config['SECRET_KEY'] = 'mahdirostami'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 db.init_app(app)
+def create_database(app):
+    if not path.exists("site/"+DB_NAME):
+        db.create_all(app=app)
+        print('Created Database!')
+
+   
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -150,10 +157,7 @@ def load_user(id):
 
 
 
-def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        db.create_all(app=app)
-        print('Created Database!')
+
 
 if __name__ == '__main__':
     create_database(app)
